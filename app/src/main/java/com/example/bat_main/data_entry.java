@@ -2,6 +2,7 @@ package com.example.bat_main;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -35,14 +36,11 @@ public class data_entry extends AppCompatActivity {
 
     TextView txtDate,txtTime;
     Button btnDate, btnTime;
-    String[] item = {"Clothing","Electronics","Enjoyment","Food", "Health","Household","Travel","Other"};
-    public AutoCompleteTextView autoCompleteTextView;
-    ArrayAdapter<String> adapterItems;
-    EditText fname, lname, whend, whered, dropd;
+//    String[] item = {"Clothing","Electronics","Enjoyment","Food", "Health","Household","Travel","Other"};
+//    AutoCompleteTextView autoCompleteTextView;
+//    ArrayAdapter<String> adapterItems;
+    EditText fname, lname, whend, whered, cat;
     Button submit;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,25 +48,20 @@ public class data_entry extends AppCompatActivity {
         setContentView(R.layout.activity_data_entry);
 
 
-         dropd = findViewById(R.id.autocomp);
+//         adapterItems = new ArrayAdapter<String>(this,R.layout.list_category,item);
+//
+//         autoCompleteTextView.setAdapter(adapterItems);
+//         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//             @Override
+//             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+//                 String item = parent.getItemAtPosition(position).toString();
+//                 Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
+//             }
+//         });
 
-         adapterItems = new ArrayAdapter<String>(this,R.layout.list_category,item);
-
-         autoCompleteTextView.setAdapter(adapterItems);
-         autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-             @Override
-             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                 String item = parent.getItemAtPosition(position).toString();
-                 Toast.makeText(getApplicationContext(), "Item: "+item, Toast.LENGTH_SHORT).show();
-             }
-         });
-
-
-
-
-        dropd = (EditText) findViewById(R.id.autocomp);
         fname =(EditText) findViewById(R.id.title);
         lname = (EditText) findViewById(R.id.amount);
+        cat = (EditText) findViewById(R.id.category);
         whend = (EditText) findViewById(R.id.date);
         whered =(EditText) findViewById(R.id.time);
         submit= (Button) findViewById(R.id.submit);
@@ -84,6 +77,9 @@ public class data_entry extends AppCompatActivity {
            public void onClick(View view) {
 
                insertData();
+
+               Intent intent = new Intent(data_entry.this, camera.class);
+               startActivity(intent);
            }
        });
 
@@ -109,7 +105,7 @@ public class data_entry extends AppCompatActivity {
 
         String title = fname.getText().toString().trim();
         String amount = lname.getText().toString().trim();
-        String cat = dropd.getText().toString().trim();
+        String category = cat.getText().toString().trim();
         String date = whend.getText().toString().trim();
         String time = whered.getText().toString().trim();
 
@@ -121,6 +117,10 @@ public class data_entry extends AppCompatActivity {
 
         else if(amount.isEmpty()){
             Toast.makeText(this, "Enter amount",Toast.LENGTH_SHORT).show();
+        }
+
+        else if(category.isEmpty()){
+            Toast.makeText(this, "Enter Category",Toast.LENGTH_SHORT).show();
         }
 
         else if(date.isEmpty()){
@@ -157,7 +157,7 @@ public class data_entry extends AppCompatActivity {
 
                     params.put("fname", title);
                     params.put("lname", amount);
-                    params.put("dropd" ,cat);
+                    params.put("cat", category);
                     params.put("whend", date );
                     params.put("whered", time);
 

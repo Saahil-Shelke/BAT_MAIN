@@ -5,6 +5,7 @@ public class retrive {
     private String id;
     private String fname;
     private String lname;
+    private String cat;
     private String whend;
     private String whered;
 
@@ -32,6 +33,14 @@ public class retrive {
         this.lname = lname;
     }
 
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
+
     public String getWhend() {
         return whend;
     }
@@ -48,10 +57,11 @@ public class retrive {
         this.whered = whered;
     }
 
-    public retrive(String id, String fname, String lname, String whend, String whered) {
+    public retrive(String id, String fname, String lname,String cat, String whend, String whered) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
+        this.cat = cat;
         this.whend = whend;
         this.whered = whered;
     }

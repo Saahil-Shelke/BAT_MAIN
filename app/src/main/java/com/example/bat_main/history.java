@@ -114,10 +114,11 @@ public class history extends AppCompatActivity {
                                         String id = object.getString("id");
                                         String fname = object.getString("fname");
                                         String lname = object.getString("lname");
+                                        String cat = object.getString("cat");
                                         String whend = object.getString("whend");
                                         String whered = object.getString("whered");
 
-                                        retrive  = new retrive(id, fname, lname, whend, whered );
+                                        retrive  = new retrive(id, fname, lname,cat, whend, whered );
                                         retriveArrayList.add(retrive);
                                         adapter.notifyDataSetChanged();
 

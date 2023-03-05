@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class detail_retrive extends AppCompatActivity {
 
-    TextView tvid , tvtitle, tvamount, tvdate, tvtime;
+    TextView tvid , tvtitle, tvamount, tvdate, tvtime, tvcategory;
     int position;
 
     @Override
@@ -19,6 +19,7 @@ public class detail_retrive extends AppCompatActivity {
         tvid = findViewById(R.id.txtid);
         tvtitle = findViewById(R.id.txttitle);
         tvamount = findViewById(R.id.txtamount);
+        tvcategory = findViewById(R.id.txtcategory);
         tvdate = findViewById(R.id.txtd);
         tvtime = findViewById(R.id.txtt);
 
@@ -28,6 +29,7 @@ public class detail_retrive extends AppCompatActivity {
         tvid.setText("ID: "+history.retriveArrayList.get(position).getId());
         tvtitle.setText("TITLE: "+history.retriveArrayList.get(position).getFname());
         tvamount.setText("AMOUNT: "+history.retriveArrayList.get(position).getLname());
+        tvcategory.setText("CATEGORY: "+history.retriveArrayList.get(position).getCat());
         tvdate.setText("DATE: "+history.retriveArrayList.get(position).getWhend());
         tvtime.setText("TIME: "+history.retriveArrayList.get(position).getWhered());
 
